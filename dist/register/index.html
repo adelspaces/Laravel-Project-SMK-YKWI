@@ -1,0 +1,178 @@
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Fixed: Changed 'roles' to 'role' in JavaScript
+        const rolesSelect = document.getElementById('role');
+        const nisField = document.getElementById('nis-field');
+        const nipField = document.getElementById('nip-field');
+
+        function toggleFields() {
+            // Fixed: Changed 'selectedRoles' to 'selectedRole'
+            const selectedRole = rolesSelect.value;
+            nisField.style.display = (selectedRole === 'siswa') ? 'flex' : 'none';
+            nipField.style.display = (selectedRole === 'guru') ? 'flex' : 'none';
+        }
+
+        rolesSelect.addEventListener('change', toggleFields);
+        toggleFields(); // inisialisasi saat halaman dibuka
+    });
+</script>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="6RDLXSxAyY6laqOocV77mmodaT3vthP08BUh1uTJ">
+
+    <title>Laravel</title>
+
+    <!-- Scripts -->
+    <script src="http://localhost/js/app.js" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="http://localhost/css/app.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="http://localhost">
+                    Laravel
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                                                                                    <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost/login">Login</a>
+                                </li>
+                            
+                                                            <li class="nav-item">
+                                    <a class="nav-link" href="http://localhost/register">Register</a>
+                                </li>
+                                                                        </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+                <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Register</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="http://localhost/register">
+                            <input type="hidden" name="_token" value="6RDLXSxAyY6laqOocV77mmodaT3vthP08BUh1uTJ" autocomplete="off">
+                            
+                            <div class="row mb-3">
+                                <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" required
+                                        autofocus>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="role" class="col-md-4 col-form-label text-md-end">Role</label>
+                                <div class="col-md-6">
+                                    <!-- Fixed: Changed name from 'roles' to 'role' -->
+                                    <select id="role" name="role" class="form-select" required>
+                                        <option value="">-- Pilih Role --</option>
+                                        <option value="siswa">Siswa</option>
+                                        <option value="guru">Guru</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                            <div id="nis-field" class="row mb-3" style="display: none;">
+                                <label for="nis" class="col-md-4 col-form-label text-md-end">NIS</label>
+                                <div class="col-md-6">
+                                    <input id="nis" type="text" class="form-control" name="nis">
+                                </div>
+                            </div>
+
+                            
+                            <div id="nip-field" class="row mb-3" style="display: none;">
+                                <label for="nip" class="col-md-4 col-form-label text-md-end">NIP</label>
+                                <div class="col-md-6">
+                                    <input id="nip" type="text" class="form-control" name="nip">
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="email" class="col-md-4 col-form-label text-md-end">Email Address</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email" required>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="no_telp" class="col-md-4 col-form-label text-md-end">No Telepon</label>
+                                <div class="col-md-6">
+                                    <input id="no_telp" type="text" class="form-control" name="no_telp" required>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="alamat" class="col-md-4 col-form-label text-md-end">Alamat</label>
+                                <div class="col-md-6">
+                                    <textarea id="alamat" class="form-control" name="alamat" required></textarea>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
+                                <div class="col-md-6">
+                                    <input id="password" type="password" class="form-control" name="password" required>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-3">
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirm
+                                    Password</label>
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required>
+                                </div>
+                            </div>
+
+                            
+                            <div class="row mb-0">
+                                <div class="col-md-6 offset-md-4">
+                                    <button type="submit" class="btn btn-primary">Register</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </main>
+    </div>
+</body>
+</html>
